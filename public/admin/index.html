@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIDIPTO Admin</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== Login screen ===== -->
+  <section id="login-screen" class="screen">
+    <form id="login-form" class="login-card">
+      <p class="wordmark">AIDIPTO</p>
+      <h1>Admin sign in</h1>
+      <label for="login-email">Email</label>
+      <input id="login-email" type="email" autocomplete="username" required />
+      <label for="login-password">Password</label>
+      <input id="login-password" type="password" autocomplete="current-password" required />
+      <button type="submit">Sign in</button>
+      <p id="login-error" class="error" role="alert"></p>
+    </form>
+  </section>
+
+  <!-- ===== Dashboard ===== -->
+  <section id="app-screen" class="screen hidden">
+    <header class="topbar">
+      <p class="wordmark">AIDIPTO <span>Admin</span></p>
+      <div class="topbar-right">
+        <span id="admin-email" class="muted"></span>
+        <button id="logout-btn" class="btn-ghost">Log out</button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="stat-grid" id="stat-grid"></section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Leads</h2>
+          <div class="controls">
+            <input id="search-input" type="search" placeholder="Search name, email, company…" />
+            <select id="status-filter">
+              <option value="">All statuses</option>
+              <option value="new">New</option>
+              <option value="contacted">Contacted</option>
+              <option value="qualified">Qualified</option>
+              <option value="won">Won</option>
+              <option value="lost">Lost</option>
+            </select>
+            <a id="export-link" class="btn-ghost" href="#">Export CSV</a>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Received</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Service</th>
+                <th>Source</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="leads-body"></tbody>
+          </table>
+        </div>
+
+        <div class="pager" id="pager"></div>
+      </section>
+    </main>
+  </section>
+
+  <!-- ===== Lead detail drawer ===== -->
+  <aside id="drawer" class="drawer hidden">
+    <div class="drawer-inner">
+      <button id="drawer-close" class="btn-ghost" aria-label="Close">Close</button>
+      <div id="drawer-content"></div>
+    </div>
+  </aside>
+
+  <script src="app.js"></script>
+</body>
+</html>
